@@ -4,3 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added:
+- Ability to format numbers by adding thousands separator(s): `12345` » `12,345`
+- Ability to format numbers by removing thousands separator(s): `12,345` » `12345`
+- Ability to choose any character for the decimal and thousands separators
+- Ability to skip formatting four-digit numbers between `1000` and `9999`

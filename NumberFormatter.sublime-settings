@@ -1,0 +1,5 @@
+{
+  "decimal_separator": ".",
+  "format_thousands": true,
+  "thousands_separator": ","
+}
