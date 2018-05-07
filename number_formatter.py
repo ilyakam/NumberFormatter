@@ -81,18 +81,19 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
     return result
 
   def run(self, edit):
+    expanded_regions = []
     selected_regions = self.view.sel()
 
     # Expands selected regions to the nearest whitespace
-    for selected_region in selected_regions:
-      expanded_region = self.expand_region_to_whitespace(selected_region)
+    for region in selected_regions:
+      expanded_region = self.expand_region_to_whitespace(region)
 
       if self.is_number(self.view.substr(expanded_region)):
-        selected_regions.add(expanded_region)
+        expanded_regions.append(expanded_region)
 
     # Formats the numbers in the selected regions
-    for selected_region in reversed(selected_regions):
-      substr = self.view.substr(selected_region)
+    for region in reversed(expanded_regions):
+      substr = self.view.substr(region)
 
       if thousands_separator in substr:
         # Removes formatting from the number
@@ -114,4 +115,4 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
                            .replace(",", thousands_separator) \
                            .replace(".", decimal_separator)
 
-      self.view.replace(edit, selected_region, new_string)
+      self.view.replace(edit, region, new_string)
