@@ -100,19 +100,32 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
         new_string = substr.replace(thousands_separator, "")
 
       else:
+        decimal_number = ""
+
         # Adds formatting to the number
         if bool(re.search(re.escape(decimal_separator) + '\d', substr)):
-          number = float(substr.replace(decimal_separator, "."))
+          # Splits the number into whole and decimal number strings
+          whole_number, decimal_number = substr.split(decimal_separator)
 
         else:
-          number = int(substr)
+          whole_number = substr
 
         # Skips formatting four-digit numbers when set
-        if (not format_thousands) and (1000 <= number <= 9999):
+        if (not format_thousands) and (1000 <= int(whole_number) <= 9999):
           continue
 
-        new_string = "{:,}".format(number) \
-                           .replace(",", thousands_separator) \
-                           .replace(".", decimal_separator)
+        new_string = ""
+
+        # Decorates whole number strings by adding a comma to every third
+        # character starting from the end:
+        for idx, character in enumerate(reversed(whole_number)):
+          if idx % 3 == 0 and idx > 0:
+            character = character + thousands_separator
+
+          new_string = character + new_string
+
+        # Recombines the whole and decimal number strings into a single number
+        if len(decimal_number) > 0:
+          new_string += decimal_separator + decimal_number
 
       self.view.replace(edit, region, new_string)

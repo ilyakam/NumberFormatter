@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Fixed:
+- Ensure that large numbers do not change due to rounding when formatted
+
 ## [1.0.1] - 2018-05-06
 ### Fixed:
 - Ensure non-numeric strings are ignored without any errors
