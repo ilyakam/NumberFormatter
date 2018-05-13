@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Fixed:
 - Ensure that large numbers do not change due to rounding when formatted
+- Ensure that empty selected regions do not throw an error in the console
 
 ## [1.0.1] - 2018-05-06
 ### Fixed:

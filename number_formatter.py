@@ -88,6 +88,9 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
     for region in selected_regions:
       expanded_region = self.expand_region_to_whitespace(region)
 
+      if expanded_region is None:
+        continue
+
       if self.is_number(self.view.substr(expanded_region)):
         expanded_regions.append(expanded_region)
 
