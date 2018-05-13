@@ -31,9 +31,7 @@ To change the settings, simply edit the `NumberFormatter.sublime-settings` file 
 
 ## Warnings
 
-* Preceding zeros are stripped out: `000123` » `123`
-* Trailing decimal zeros are stripped out: `0.123000` » `0.123`
-* A missing leading zero is added to all decimal numbers: `.123` » `0.123`
+* Numbers with preceding zeros are formatted anyway (`000123` » `000,123`)
 * When the `thousands_separator` is set to an empty space (`" "`), the whole number must be selected in order to unformat it (`12 345` » `12345`)
 
 ## Changelog

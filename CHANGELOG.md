@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.2] - 2018-05-13
+### Fixed:
+- Ensure that large numbers do not change due to rounding when formatted
+- Ensure that empty selected regions do not throw an error in the console
+- Ensure that a useless decimal dot (e.g., `1234.`) doesn't count as a digit
+
 ## [1.0.1] - 2018-05-06
 ### Fixed:
 - Ensure non-numeric strings are ignored without any errors
