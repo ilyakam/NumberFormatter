@@ -103,10 +103,10 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
         new_string = substr.replace(thousands_separator, "")
 
       else:
-        decimal_number = ""
+        decimal_number = None
 
         # Adds formatting to the number
-        if bool(re.search(re.escape(decimal_separator) + '\d', substr)):
+        if bool(re.search(re.escape(decimal_separator), substr)):
           # Splits the number into whole and decimal number strings
           whole_number, decimal_number = substr.split(decimal_separator)
 
@@ -128,7 +128,7 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
           new_string = character + new_string
 
         # Recombines the whole and decimal number strings into a single number
-        if len(decimal_number) > 0:
+        if decimal_number is not None:
           new_string += decimal_separator + decimal_number
 
       self.view.replace(edit, region, new_string)
