@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.3] - 2018-05-14
+### Fixed:
+- Ensure that updating the settings take immediate effect
+
 ## [1.0.2] - 2018-05-13
 ### Fixed:
 - Ensure that large numbers do not change due to rounding when formatted
