@@ -2,12 +2,6 @@ import re
 import sublime
 import sublime_plugin
 
-settings = sublime.load_settings("NumberFormatter.sublime-settings")
-
-decimal_separator = settings.get("decimal_separator", ".")
-format_thousands = settings.get("format_thousands", True)
-thousands_separator = settings.get("thousands_separator", ",")
-
 class FormatNumberCommand(sublime_plugin.TextCommand):
   def expand_region_to_whitespace(self, region):
     # Consider only the lines containing the region
@@ -69,7 +63,9 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
     Strips off all locale characters from string and tests whether it's a number
     """
     result = False
-    str = str.replace(decimal_separator, ".").replace(thousands_separator, "")
+    str = (str
+           .replace(self.decimal_separator, ".")
+           .replace(self.thousands_separator, ""))
 
     try:
       val = float(str)
@@ -81,6 +77,12 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
     return result
 
   def run(self, edit):
+    settings = sublime.load_settings("NumberFormatter.sublime-settings")
+
+    self.decimal_separator = settings.get("decimal_separator", ".")
+    self.format_thousands = settings.get("format_thousands", True)
+    self.thousands_separator = settings.get("thousands_separator", ",")
+
     expanded_regions = []
     selected_regions = self.view.sel()
 
@@ -98,23 +100,23 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
     for region in reversed(expanded_regions):
       substr = self.view.substr(region)
 
-      if thousands_separator in substr:
+      if self.thousands_separator in substr:
         # Removes formatting from the number
-        new_string = substr.replace(thousands_separator, "")
+        new_string = substr.replace(self.thousands_separator, "")
 
       else:
         decimal_number = None
 
         # Adds formatting to the number
-        if bool(re.search(re.escape(decimal_separator), substr)):
+        if bool(re.search(re.escape(self.decimal_separator), substr)):
           # Splits the number into whole and decimal number strings
-          whole_number, decimal_number = substr.split(decimal_separator)
+          whole_number, decimal_number = substr.split(self.decimal_separator)
 
         else:
           whole_number = substr
 
         # Skips formatting four-digit numbers when set
-        if (not format_thousands) and (1000 <= int(whole_number) <= 9999):
+        if (not self.format_thousands) and (1000 <= int(whole_number) <= 9999):
           continue
 
         new_string = ""
@@ -123,12 +125,12 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
         # character starting from the end:
         for idx, character in enumerate(reversed(whole_number)):
           if idx % 3 == 0 and idx > 0:
-            character = character + thousands_separator
+            character = character + self.thousands_separator
 
           new_string = character + new_string
 
         # Recombines the whole and decimal number strings into a single number
         if decimal_number is not None:
-          new_string += decimal_separator + decimal_number
+          new_string += self.decimal_separator + decimal_number
 
       self.view.replace(edit, region, new_string)
