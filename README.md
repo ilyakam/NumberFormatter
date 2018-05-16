@@ -2,6 +2,19 @@
 
 This [Sublime Text](http://www.sublimetext.com/) plugin formats plain numbers by adding a thousands separator to them. It also unformats them in reverse. See the [Features](#features) section below for details.
 
+## Installation
+
+* **Package Control**
+  1. [Install Package Control](https://packagecontrol.io/installation)
+  1. [Bring up the Command Palette](https://sublime-text.readthedocs.io/en/stable/reference/command_palette.html#how-to-use-the-command-palette) and type "Package Control: Install Package"
+  1. Type "NumberFormatter" and press <kbd>enter</kbd>
+* **Directly**
+  1. Locate the `Packages` folder in the [data directory](http://docs.sublimetext.info/en/sublime-text-3/basic_concepts.html#the-data-directory)
+  1. Download the [latest version of NumberFormatter](https://github.com/ilyakam/NumberFormatter/releases/latest)
+  1. Extract the archive into the `Packages` folder
+* **Development**
+  1. [Follow the instructions on the `CONTRIBUTING` guide](./CONTRIBUTING.md#getting-started)
+
 ## Usage
 
 * Linux: <kbd>ctrl</kbd><kbd>shift</kbd><kbd>comma</kbd>

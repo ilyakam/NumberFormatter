@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added:
+- Installation instructions to the `README`
+
+### Fixed:
+- Ensure that the repository name is addressed in the `CONTRIBUTING` guide
+
 ## [1.0.3] - 2018-05-14
 ### Fixed:
 - Ensure that updating the settings take immediate effect
