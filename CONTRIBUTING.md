@@ -15,22 +15,22 @@ This project is currently being maintained by:
 
 ## Order of Operations
 
-1. [Create a new issue](https://github.com/ilyakam/RENAMEME/issues/new)
+1. [Create a new issue](https://github.com/ilyakam/NumberFormatter/issues/new)
 1. Fork the repo
 1. Write code and thoroughly test it
-1. [Submit a pull request](https://github.com/ilyakam/RENAMEME/compare) against `develop`
+1. [Submit a pull request](https://github.com/ilyakam/NumberFormatter/compare) against `develop`
 1. Communicate in a timely manner while the PR is open
 
 ## Getting Started
 1. Clone this repo (`~/code` is assumed)
    ```sh
    cd ~/code
-   git clone git@github.com:ilyakam/RENAMEME.git
+   git clone git@github.com:ilyakam/NumberFormatter.git
    ```
 1. Create an alias in your [Sublime Text's Packages folder](https://forum.sublimetext.com/t/9484) (macOS is assumed)
    ```sh
    cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
-   ln -s ~/code/RENAMEME ./
+   ln -s ~/code/NumberFormatter ./
    ```
 
 ## Commit Guidelines
