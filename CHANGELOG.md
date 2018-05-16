@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added:
 - Installation instructions to the `README`
+- Command to "Format Numbers" to the Command Palette
 
 ### Fixed:
 - Ensure that the repository name is addressed in the `CONTRIBUTING` guide
