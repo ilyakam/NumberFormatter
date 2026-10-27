@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.1.1] - 2026-10-27
 ### Fixed:
 - Leave numbers containing underscores unchanged in Sublime Text 4 unless an underscore is a configured separator
 
