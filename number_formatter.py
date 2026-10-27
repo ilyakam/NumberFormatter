@@ -67,6 +67,10 @@ class FormatNumberCommand(sublime_plugin.TextCommand):
            .replace(self.decimal_separator, ".")
            .replace(self.thousands_separator, ""))
 
+    # Python 3.6+ accepts underscores, but the formatter groups characters.
+    if "_" in str:
+      return False
+
     try:
       val = float(str)
       result = True
